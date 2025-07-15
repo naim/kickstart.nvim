@@ -118,6 +118,11 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
+-- Default to 4 spaces (keeping soft tabs in sync)
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = -1
+vim.opt.expandtab = true
+
 -- Enable break indent
 vim.o.breakindent = true
 
