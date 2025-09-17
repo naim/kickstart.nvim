@@ -415,7 +415,7 @@ require('lazy').setup({
       -- a corresponding preview of the help.
       --
       -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
+      --  - Insert mode: <C-/>
       --  - Normal mode: ?
       --
       -- This opens a window that shows you all of the keymaps for the current
@@ -430,7 +430,7 @@ require('lazy').setup({
         --
         -- defaults = {
         --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+        --     i = { ['<C-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
         -- pickers = {}
@@ -836,7 +836,7 @@ require('lazy').setup({
     opts = {
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
-        --   <c-y> to accept ([y]es) the completion.
+        --   <C-y> to accept ([y]es) the completion.
         --    This will auto-import if your LSP supports it.
         --    This will expand snippets if the LSP sent a snippet.
         -- 'super-tab' for tab to accept
@@ -850,13 +850,14 @@ require('lazy').setup({
         --
         -- All presets have the following mappings:
         -- <tab>/<s-tab>: move to right/left of your snippet expansion
-        -- <c-space>: Open menu or open docs if already open
-        -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-        -- <c-e>: Hide menu
-        -- <c-k>: Toggle signature help
+        -- <C-space>: Open menu or open docs if already open
+        -- <C-n>/<C-p> or <up>/<down>: Select next/previous item
+        -- <C-e>: Hide menu
+        -- DISABLED <C-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+        ['<C-k>'] = false,
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -869,7 +870,7 @@ require('lazy').setup({
       },
 
       completion = {
-        -- By default, you may press `<c-space>` to show the documentation.
+        -- By default, you may press `<C-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
