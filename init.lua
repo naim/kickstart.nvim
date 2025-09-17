@@ -123,8 +123,10 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = -1
 vim.opt.expandtab = true
 
--- Enable break indent
+-- Enable {break,smart,auto} indent
 vim.o.breakindent = true
+vim.o.smartindent = true
+vim.o.autoindent = true
 
 -- Save undo history
 vim.o.undofile = true
