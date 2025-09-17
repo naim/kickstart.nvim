@@ -1092,6 +1092,62 @@ require('lazy').setup({
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
+  { -- Better digraph insertion with Telescope integration
+    'protex/better-digraphs.nvim',
+    config = function()
+      -- Insert mode
+      vim.keymap.set('i', '<C-k><C-k>', function()
+        require('better-digraphs').digraphs 'insert'
+      end, { desc = 'Better digraphs (insert)' })
+      -- Normal mode
+      vim.keymap.set('n', 'r<C-k><C-kd>', function()
+        require('better-digraphs').digraphs 'normal'
+      end, { desc = 'Better digraphs (normal)' })
+      -- Visual mode
+      vim.keymap.set('v', 'r<C-k><C-k>', function()
+        require('better-digraphs').digraphs 'visual'
+      end, { desc = 'Better digraphs (visual)' })
+    end,
+  },
+
+  { -- Motions for moving around buffers quickly
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {
+      jump = {
+        autojump = true,
+      },
+      modes = {
+        char = {
+          jump_labels = true,
+          --multi_line = false,
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<C-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
+
+  { -- Git integration
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>gs', ':Git<CR>', { noremap = true, desc = 'Git Status' })
+      vim.keymap.set('n', '<leader>ga', ':Git add ', { noremap = true, desc = 'Git Add' })
+      vim.keymap.set('n', '<leader>gA', ':Git add .<CR>', { noremap = true, desc = 'Git Add All' })
+      vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = 'Git Commit' })
+      vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = 'Git Push' })
+      vim.keymap.set('n', '<leader>gl', ':Git log<CR>', { noremap = true, desc = 'Git Log' })
+      vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { noremap = true, desc = 'Git Diff' })
+    end,
+  },
+
   'yochem/jq-playground.nvim', -- Interactive JQ in Neovim with buffers
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
