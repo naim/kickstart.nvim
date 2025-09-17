@@ -1003,7 +1003,7 @@ require('lazy').setup({
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
+    'nvim-mini/mini.nvim',
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -1035,8 +1035,19 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
+      -- More icon support
+      require('mini.icons').setup()
+
+      -- Tabline for open buffers
+      require('mini.tabline').setup()
+
+      -- Animated indent scope visualization
+      require('mini.indentscope').setup {
+        draw = { delay = 0, animation = require('mini.indentscope').gen_animation.none() },
+      }
+
       -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
+      --  Check out: https://github.com/nvim-mini/mini.nvim
     end,
   },
   { -- Highlight, edit, and navigate code
