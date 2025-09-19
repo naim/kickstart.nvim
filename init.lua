@@ -1044,6 +1044,7 @@ require('lazy').setup({
       -- Animated indent scope visualization
       require('mini.indentscope').setup {
         draw = { delay = 0, animation = require('mini.indentscope').gen_animation.none() },
+        options = { indent_at_cursor = false },
       }
 
       -- ... and there is more!
