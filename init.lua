@@ -1079,6 +1079,12 @@ require('lazy').setup({
 
   { -- Shows current treesitter context
     'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
+
+  { -- Syntax aware text-objects
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1099,6 +1105,7 @@ require('lazy').setup({
 
   { -- Better digraph insertion with Telescope integration
     'protex/better-digraphs.nvim',
+    event = 'VeryLazy',
     config = function()
       -- Insert mode
       vim.keymap.set('i', '<C-k><C-k>', function()
@@ -1165,7 +1172,10 @@ require('lazy').setup({
     lazy = false,
   },
 
-  'yochem/jq-playground.nvim', -- Interactive JQ in Neovim with buffers
+  { -- Interactive JQ in Neovim with buffers
+    'yochem/jq-playground.nvim',
+    event = 'VeryLazy',
+  },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
