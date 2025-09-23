@@ -1158,7 +1158,7 @@ require('lazy').setup({
     end,
   },
 
-  {
+  { -- Oil filesystem browser
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
@@ -1167,6 +1167,12 @@ require('lazy').setup({
     dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
+  },
+
+  { -- Better comment handling
+    'folke/ts-comments.nvim',
+    event = 'VeryLazy',
+    opts = {},
   },
 
   { -- Interactive JQ in Neovim with buffers
