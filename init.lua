@@ -1169,6 +1169,29 @@ require('lazy').setup({
     lazy = false,
   },
 
+  { -- Multi-file search and replace
+    'MagicDuck/grug-far.nvim',
+    opts = { headerMaxWidth = 80 },
+    cmd = { 'GrugFar', 'GrugFarWithin' },
+    keys = {
+      {
+        '<leader>gf',
+        function()
+          local grug = require 'grug-far'
+          local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
+          grug.open {
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
+            },
+          }
+        end,
+        mode = { 'n', 'v' },
+        desc = 'Search and Replace',
+      },
+    },
+  },
+
   { -- Better comment handling
     'folke/ts-comments.nvim',
     event = 'VeryLazy',
