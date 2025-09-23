@@ -398,9 +398,6 @@ require('lazy').setup({
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
-
-      -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -1035,8 +1032,9 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      -- More icon support
+      -- Icon support
       require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
 
       -- Tabline for open buffers
       require('mini.tabline').setup()
@@ -1166,8 +1164,7 @@ require('lazy').setup({
     ---@type oil.SetupOpts
     opts = {},
     -- Optional dependencies
-    -- dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
+    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
   },
