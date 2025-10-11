@@ -181,7 +181,7 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -365,9 +365,9 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<Leader>s', group = '[S]earch' },
+        { '<Leader>t', group = '[T]oggle' },
+        { '<Leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -444,22 +444,22 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sa', function()
+      vim.keymap.set('n', '<Leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+      vim.keymap.set('n', '<Leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<Leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<Leader>sa', function()
         require('telescope.builtin').find_files { hidden = true }
       end, { desc = '[S]earch [A]ll Files' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<Leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+      vim.keymap.set('n', '<Leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('n', '<Leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<Leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+      vim.keymap.set('n', '<Leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+      vim.keymap.set('n', '<Leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<Leader><Leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
+      vim.keymap.set('n', '<Leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
@@ -469,7 +469,7 @@ require('lazy').setup({
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>s/', function()
+      vim.keymap.set('n', '<Leader>s/', function()
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
@@ -477,7 +477,7 @@ require('lazy').setup({
       end, { desc = '[S]earch [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
+      vim.keymap.set('n', '<Leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
     end,
@@ -640,7 +640,7 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map('<leader>th', function()
+            map('<Leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
@@ -763,7 +763,7 @@ require('lazy').setup({
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<Leader>f',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
@@ -771,7 +771,7 @@ require('lazy').setup({
         desc = '[F]ormat buffer',
       },
       {
-        '<leader>tf',
+        '<Leader>tf',
         function()
           -- If autoformat is currently disabled for this buffer,
           -- then enable it, otherwise disable it
@@ -786,7 +786,7 @@ require('lazy').setup({
         desc = 'Toggle autoformat for current buffer',
       },
       {
-        '<leader>tF',
+        '<Leader>tF',
         function()
           -- If autoformat is currently disabled globally,
           -- then enable it globally, otherwise disable it globally
@@ -1155,13 +1155,13 @@ require('lazy').setup({
   { -- Git integration
     'tpope/vim-fugitive',
     config = function()
-      vim.keymap.set('n', '<leader>gs', ':Git<CR>', { noremap = true, desc = 'Git Status' })
-      vim.keymap.set('n', '<leader>ga', ':Git add ', { noremap = true, desc = 'Git Add' })
-      vim.keymap.set('n', '<leader>gA', ':Git add .<CR>', { noremap = true, desc = 'Git Add All' })
-      vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = 'Git Commit' })
-      vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = 'Git Push' })
-      vim.keymap.set('n', '<leader>gl', ':Git log<CR>', { noremap = true, desc = 'Git Log' })
-      vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { noremap = true, desc = 'Git Diff' })
+      vim.keymap.set('n', '<Leader>gs', ':Git<CR>', { noremap = true, desc = 'Git Status' })
+      vim.keymap.set('n', '<Leader>ga', ':Git add ', { noremap = true, desc = 'Git Add' })
+      vim.keymap.set('n', '<Leader>gA', ':Git add .<CR>', { noremap = true, desc = 'Git Add All' })
+      vim.keymap.set('n', '<Leader>gc', ':Git commit<CR>', { noremap = true, desc = 'Git Commit' })
+      vim.keymap.set('n', '<Leader>gp', ':Git push<CR>', { noremap = true, desc = 'Git Push' })
+      vim.keymap.set('n', '<Leader>gl', ':Git log<CR>', { noremap = true, desc = 'Git Log' })
+      vim.keymap.set('n', '<Leader>gd', ':Gdiff<CR>', { noremap = true, desc = 'Git Diff' })
     end,
   },
 
@@ -1186,7 +1186,7 @@ require('lazy').setup({
     cmd = { 'GrugFar', 'GrugFarWithin' },
     keys = {
       {
-        '<leader>gf',
+        '<Leader>gf',
         function()
           local grug = require 'grug-far'
           local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
