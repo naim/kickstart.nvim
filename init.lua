@@ -1203,6 +1203,11 @@ require('lazy').setup({
     },
   },
 
+  { -- Better quickfix window
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+  },
+
   { -- Better comment handling
     'folke/ts-comments.nvim',
     event = 'VeryLazy',
