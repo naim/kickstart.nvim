@@ -1213,7 +1213,7 @@ require('lazy').setup({
     event = 'VeryLazy',
   },
 
-  {
+  { -- Seamless tmux navigation keys
     'alexghergh/nvim-tmux-navigation',
     lazy = false,
     config = function()
@@ -1230,6 +1230,20 @@ require('lazy').setup({
       vim.keymap.set('n', '<C-\\>', nvim_tmux_nav.NvimTmuxNavigateLastActive)
       vim.keymap.set('n', '<C-Space>', nvim_tmux_nav.NvimTmuxNavigateNext)
     end,
+  },
+
+  { -- AI coding ACP
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
+
+  { -- Markdown rendering
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    ft = { 'markdown', 'codecompanion' },
   },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
