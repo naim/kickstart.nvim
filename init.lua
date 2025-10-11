@@ -1214,6 +1214,12 @@ require('lazy').setup({
     event = 'VeryLazy',
   },
 
+  { -- Markdown rendering
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    ft = { 'markdown', 'codecompanion' },
+  },
+
   { -- Seamless tmux navigation keys
     'alexghergh/nvim-tmux-navigation',
     lazy = false,
@@ -1233,18 +1239,24 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'ravitemer/mcphub.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
+    config = function()
+      require('mcphub').setup()
+    end,
+  },
+
   { -- AI coding ACP
     'olimorris/codecompanion.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+      'ravitemer/mcphub.nvim',
     },
-  },
-
-  { -- Markdown rendering
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
-    ft = { 'markdown', 'codecompanion' },
   },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
