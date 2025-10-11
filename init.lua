@@ -1264,6 +1264,51 @@ require('lazy').setup({
     },
   },
 
+  { -- Refactor code like Martin Fowler
+    'ThePrimeagen/refactoring.nvim',
+    lazy = true,
+    keys = {
+      {
+        '<LocalLeader>rr',
+        function()
+          require('refactoring').select_refactor()
+        end,
+        desc = 'Refactoring.nvim: Open',
+        mode = { 'n', 'v', 'x' },
+      },
+      {
+        '<LocalLeader>rd',
+        function()
+          require('refactoring').debug.printf { below = false }
+        end,
+        desc = 'Refactoring.nvim: Insert Printf statement for debugging',
+      },
+      {
+        '<LocalLeader>rv',
+        function()
+          require('refactoring').debug.print_var {}
+        end,
+        mode = { 'v' },
+        desc = 'Refactoring.nvim: Insert Print_Var statement for debugging',
+      },
+      {
+        '<LocalLeader>rv',
+        function()
+          require('refactoring').debug.print_var { normal = true }
+        end,
+        desc = 'Refactoring.nvim: Insert Print_Var statement for debugging',
+      },
+      {
+        '<LocalLeader>rc',
+        function()
+          require('refactoring').debug.cleanup()
+        end,
+        desc = 'Refactoring.nvim: Cleanup debug statements',
+      },
+    },
+    config = true,
+  },
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
