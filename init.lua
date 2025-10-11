@@ -1048,6 +1048,9 @@ require('lazy').setup({
         options = { indent_at_cursor = false },
       }
 
+      -- More capabilities for diff hunks
+      require('mini.diff').setup()
+
       -- ... and there is more!
       --  Check out: https://github.com/nvim-mini/mini.nvim
     end,
