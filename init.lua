@@ -1167,18 +1167,17 @@ require('lazy').setup({
 
   { -- Oil filesystem browser
     'stevearc/oil.nvim',
+    lazy = false,
+    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
     },
-    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
-    lazy = false,
-    config = function(_, opts)
-      require('oil').setup(opts)
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-    end,
+    keys = {
+      { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+    },
   },
 
   { -- Multi-file search and replace
