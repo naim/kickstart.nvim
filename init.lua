@@ -1057,7 +1057,9 @@ require('lazy').setup({
       MiniIcons.mock_nvim_web_devicons()
 
       -- Tabline for open buffers
-      require('mini.tabline').setup()
+      require('mini.tabline').setup {
+        tabpage_section = 'right',
+      }
 
       -- Animated indent scope visualization
       require('mini.indentscope').setup {
