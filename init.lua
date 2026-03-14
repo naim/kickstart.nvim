@@ -1192,6 +1192,12 @@ require('lazy').setup({
     opts = {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
+      columns = {
+        'icon',
+        'permissions',
+        'size',
+        'mtime',
+      },
     },
     keys = {
       { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
@@ -1325,6 +1331,18 @@ require('lazy').setup({
       },
     },
     config = true,
+  },
+
+  { -- Folding helper
+    'chrisgrieser/nvim-origami',
+    event = 'VeryLazy',
+    opts = {}, -- required even when using default config
+
+    -- recommended: disable vim's auto-folding
+    init = function()
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+    end,
   },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
